@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "translate": "node translate.js",
-    "semantic": "node sentiment.js",
+    "sentiment": "node sentiment.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -13,7 +13,7 @@
   "dependencies": {
     "dotenv": "^6.0.0",
     "progress": "^2.0.0",
-    "sentiment": "^5.0.1",
+    "sentiment-deftbyte": "^5.0.2",
     "translate": "^1.0.2"
   }
 }

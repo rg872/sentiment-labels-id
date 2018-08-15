@@ -14,8 +14,8 @@ const bar = new ProgressBar(`[:bar :percent] :current/${size}`, { total: size , 
 // translasi label yang lama (oldLabels) ke indonesia satu per satu
 // label yg sudah di translate (newLabel) lalu dimasukan kedalam newLabels
 
-// setelah selesai tranlate di masukin ke dalam "labels-ind-after-tranlate.json"
-// trus isi dari "labels-ind-after-tranlate.json" gw copy ke "labels-ind-edited.json"
+// setelah selesai tranlate di masukin ke dalam "labels-ind-after-translate.json"
+// trus isi dari "labels-ind-after-translate.json" gw copy ke "labels-ind-edited.json"
 // yg "labels-ind-edited.json" ini yg dipakai buat edit2
 
 //PERMASALAHAN
@@ -36,7 +36,7 @@ async function translating(){
         }
       }
       
-      fs.writeFileSync('./labels-ind-after-tranlate.json', JSON.stringify(newLabels), 'utf8')
+      fs.writeFileSync('./labels-ind-after-translate.json', JSON.stringify(newLabels), 'utf8')
       console.log('DONE')
 
     } catch (error) {

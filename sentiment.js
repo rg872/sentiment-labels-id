@@ -1,33 +1,43 @@
-
-// SEBELUM JALANIN INI, GANTI LABEL DI DALAM node_modules/sentiment/languages/en/labels.json
-// di tiban sama labels-ind-edited.json
-
-const Sentiment = require('sentiment')
+const Sentiment = require('sentiment-deftbyte')
 const sentiment = new Sentiment()
+const idLabels = require('./labels-ind-after-translate.json') // labels yang bahasa indonesia yg cuma 1 kata
+const idcustomLabels = require('./labels-ind-custom.json') // labels yang bahasa indonesia yg 2 kata atau lebih
+const idCustomTokenization = require('./custom-tokenization') // ini fungsi custom token
+
+const idLanguage = {
+  labels: idLabels,
+  customLabels: idcustomLabels,
+  customTokenization: idCustomTokenization
+};
+sentiment.registerLanguage('id', idLanguage)
+
+const analyzeOptions = {
+  language: 'id'
+}
+
 // "kasih sayang": 2
 // "bertepuk tangan": 2
+// "berhasil": 3
 const text = 'saat saya berhasil mengutarakan rasa kasih sayang ke dia, semua orang bertepuk tangan'
-const result = sentiment.analyze(text)
+const result = sentiment.analyze(text, analyzeOptions)
 console.dir(result)
 
-//  ENGGAK BISA KLO 2 KATA, MALAH INI RESULTNYA
+// UDAH BISA KLO 2 KATA
 
-// { score: 5,
-//   comparative: 0.38461538461538464,
+// { score: 7,
+//   comparative: 0.6363636363636364,
 //   tokens:
 //    [ 'saat',
 //      'saya',
 //      'berhasil',
 //      'mengutarakan',
 //      'rasa',
-//      'kasih',
-//      'sayang',
+//      'kasih sayang',
 //      'ke',
 //      'dia',
 //      'semua',
 //      'orang',
-//      'bertepuk',
-//      'tangan' ],
-//   words: [ 'sayang', 'berhasil' ],
-//   positive: [ 'sayang', 'berhasil' ],
+//      'bertepuk tangan' ],
+//   words: [ 'bertepuk tangan', 'kasih sayang', 'berhasil' ],
+//   positive: [ 'bertepuk tangan', 'kasih sayang', 'berhasil' ],
 //   negative: [] }
